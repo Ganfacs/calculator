@@ -2,8 +2,7 @@
 import math
 
 doc = ("1.Калькулятор", "2.Дискриминант",  "3.П(Число Пи)", "4.Перевод чисел", "5.Факториал", "6.Вероятность", "7.Выход")
-doc2 = ('1.Двоичную: Чиать после буквы x', '2.Шеснадцатиричную: Читать после буквы b', '3.Десятичную: Читать как обычно',)
-doc3 = ('Миллиметры','Сантиметры','Децеметры','Метры','Километры','Футы','Мили',)
+doc2 = ('1.Двоичную: Чиать после буквы x', '2.Шеснадцатиричную: Читать после буквы b', '3.Десятичную: Читать как обычно(только из двоичной системы)',)
 f = True
 class Glob:
     def discriminant(self):
@@ -15,8 +14,8 @@ class Glob:
             D = (b*b)-4*a*c
             print('Дискриминант равен: ', D)
             if D >= 0:
-                x1 = (-b+sqrt(D))/2*a
-                x2 = (-b-sqrt(D))/2*a
+                x1 = (- b + math.sqrt(D)) / 2 * a
+                x2 = (- b - math.sqrt(D))/2*a
                 print('x1=', x1)
                 print('x2=', x2)
             elif D < 0:
@@ -55,21 +54,27 @@ class Glob:
 
     def binary_system(self):
         f = True
-        while f:
-            e = float(input('Введите число: '))
-            print(bin(e))
-            enter = input('Вы хотите выйти? ')
-            if enter == 'Да' or enter == 'да' or enter == 'yes' or enter == 'Yes':
-                break
-                enter = input('Вы хотите выйти на главную? ')
+        try:
+            while f:
+                e = int(input('Введите число: '))
+                g = bin(e)
+                print(g)
+                enter = input('Вы хотите выйти? ')
                 if enter == 'Да' or enter == 'да' or enter == 'yes' or enter == 'Yes':
-                    return
-            elif enter == 'Нет' or enter == 'нет' or enter == 'No' or enter == 'no' or enter == 'Not' or enter == 'not':
-                continue
+                    break
+                    enter = input('Вы хотите выйти на главную? ')
+                    if enter == 'Да' or enter == 'да' or enter == 'yes' or enter == 'Yes':
+                        return
+                elif enter == 'Нет' or enter == 'нет' or enter == 'No' or enter == 'no' or enter == 'Not' or enter == 'not':
+                    continue
+        except TypeError:
+            print('Произошла ошибка')
+        else:
+            print('no')
     def hexadecimal_system(self):
         f = True
         while f:
-            e = float(input('Введите число: '))
+            e = int(input('Введите число: '))
             print(hex(e))
             enter = input('Вы хотите выйти? ')
             if enter == 'Да' or enter == 'да' or enter == 'yes' or enter == 'Yes':
@@ -83,7 +88,7 @@ class Glob:
         f = True
         while f:
             enter = input('Введите число: ')
-            print(float(enter, 2))
+            print(int(enter, 2))
             enter = input('Вы хотите выйти? ')
             if enter == 'Да' or enter == 'да' or enter == 'yes' or enter == 'Yes':
                 break
@@ -100,7 +105,7 @@ class Glob:
             p = m/n
             print('P = ', p)
             enter = input('Вы хотите выйти?: ')
-            if enter == 'yes' or enter == 'Yes' or enter == 'Да' or ente == 'да':
+            if enter == 'yes' or enter == 'Yes' or enter == 'Да' or enter == 'да':
                 return
             elif enter == 'not' or enter == 'Not' or enter == 'Нет' or enter == 'нет':
                 continue
